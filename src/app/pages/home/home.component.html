@@ -1,1 +1,25 @@
-<p>home works!</p>
+<div class="home-wrapper">
+  <h1>Welcome Navayuvan</h1>
+
+  <!-- Quiz Wrapper -->
+  <div class="quizzes">
+    <!-- Quiz -->
+    <div
+      class="quiz-wrapper"
+      *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 1, 1]"
+    >
+      <button mat-button (click)="navToQuizDetails()">
+        <div class="quiz">
+          <div class="info">
+            <h3>Quiz Name</h3>
+            <h4 class="pill green">Difficulty</h4>
+            <h4 class="pill violet">Category</h4>
+          </div>
+          <div class="action-start">
+            <h2>></h2>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
