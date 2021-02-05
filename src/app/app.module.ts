@@ -16,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { QuizDetailComponent } from './pages/quiz-detail/quiz-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { MatCardModule } from '@angular/material/card';
     HomeComponent,
     QuizComponent,
     ResultComponent,
+    QuizDetailComponent,
   ],
   imports: [
     BrowserModule,
