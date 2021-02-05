@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { QuizDetailComponent } from './pages/quiz-detail/quiz-detail.component';
 import { QuizComponent } from './pages/quiz/quiz.component';
 import { ResultComponent } from './pages/result/result.component';
 import { SignupComponent } from './pages/signup/signup.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent, pathMatch: 'full' },
   { path: 'home', component: HomeComponent, pathMatch: 'full' },
   { path: 'quiz', component: QuizComponent, pathMatch: 'full' },
+  { path: 'quiz-detail', component: QuizDetailComponent, pathMatch: 'full' },
   { path: 'result', component: ResultComponent, pathMatch: 'full' },
 ];
 
