@@ -7,6 +7,7 @@ import { ResultComponent } from './pages/result/result.component';
 import { SignupComponent } from './pages/signup/signup.component';
 
 const routes: Routes = [
+  {path: '', pathMatch: 'full', redirectTo: 'login'},  
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: 'signup', component: SignupComponent, pathMatch: 'full' },
   { path: 'home', component: HomeComponent, pathMatch: 'full' },
