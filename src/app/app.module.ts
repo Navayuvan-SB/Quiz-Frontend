@@ -18,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
 import { QuizDetailComponent } from './pages/quiz-detail/quiz-detail.component';
+import { AdminQuizDetailsComponent } from './pages/admin-quiz-details/admin-quiz-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { QuizDetailComponent } from './pages/quiz-detail/quiz-detail.component';
     QuizComponent,
     ResultComponent,
     QuizDetailComponent,
+    AdminQuizDetailsComponent,
   ],
   imports: [
     BrowserModule,
