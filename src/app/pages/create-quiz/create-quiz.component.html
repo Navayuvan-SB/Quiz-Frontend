@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>Create Quiz</h2>
+<mat-dialog-content>
+  <h4>Quiz Name</h4>
+  <mat-form-field class="example-full-width">
+    <mat-label>Enter the quiz name</mat-label>
+    <input matInput />
+  </mat-form-field>
+
+  <h4>Category</h4>
+  <mat-form-field appearance="fill">
+    <mat-label>Chose category</mat-label>
+    <mat-select>
+      <mat-option value="select1"> Select 1 </mat-option>
+      <mat-option value="select2"> Select 1 </mat-option>
+      <mat-option value="select3"> Select 1 </mat-option>
+      <mat-option value="select4"> Select 1 </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <h4>Category</h4>
+  <mat-form-field appearance="fill">
+    <mat-label>Chose category</mat-label>
+    <mat-select>
+      <mat-option value="select1"> Select 1 </mat-option>
+      <mat-option value="select2"> Select 1 </mat-option>
+      <mat-option value="select3"> Select 1 </mat-option>
+      <mat-option value="select4"> Select 1 </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <h4>Category</h4>
+  <mat-form-field appearance="fill">
+    <mat-label>Chose category</mat-label>
+    <mat-select>
+      <mat-option value="select1"> Select 1 </mat-option>
+      <mat-option value="select2"> Select 1 </mat-option>
+      <mat-option value="select3"> Select 1 </mat-option>
+      <mat-option value="select4"> Select 1 </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Create</button>
+</mat-dialog-actions>

@@ -1,12 +1,15 @@
 .home-wrapper {
   padding: 50px;
-
-  h1 {
-    font-size: 40px;
-    color: rgb(26, 26, 26);
-    line-height: 50px;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1 {
+      font-size: 40px;
+      color: rgb(26, 26, 26);
+      line-height: 50px;
+    }
   }
-
   .quizzes {
     display: grid;
     gap: 1rem;
@@ -95,6 +98,12 @@
 @media (max-width: 682px) {
   .home-wrapper {
     padding: 20px;
+    .header {
+      flex-direction: column;
+      h1 {
+        font-size: 30px;
+      }
+    }
     .quizzes {
       grid-template-columns: repeat(1, 1fr);
     }

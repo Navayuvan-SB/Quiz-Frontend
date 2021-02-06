@@ -10,6 +10,9 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { HomeComponent } from './pages/home/home.component';
 import { QuizComponent } from './pages/quiz/quiz.component';
 import { ResultComponent } from './pages/result/result.component';
+import { QuizDetailComponent } from './pages/quiz-detail/quiz-detail.component';
+import { AdminQuizDetailsComponent } from './pages/admin-quiz-details/admin-quiz-details.component';
+import { CreateQuizComponent } from './pages/create-quiz/create-quiz.component';
 
 // Material Components Import
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,8 +20,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
-import { QuizDetailComponent } from './pages/quiz-detail/quiz-detail.component';
-import { AdminQuizDetailsComponent } from './pages/admin-quiz-details/admin-quiz-details.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from "@angular/material/select"
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +33,7 @@ import { AdminQuizDetailsComponent } from './pages/admin-quiz-details/admin-quiz
     ResultComponent,
     QuizDetailComponent,
     AdminQuizDetailsComponent,
+    CreateQuizComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,9 @@ import { AdminQuizDetailsComponent } from './pages/admin-quiz-details/admin-quiz
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],
