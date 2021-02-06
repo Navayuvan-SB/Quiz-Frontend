@@ -1,1 +1,34 @@
-<p>quiz works!</p>
+<div class="quiz-questions">
+  <div class="header">
+    <h3>Quiz Name</h3>
+    <h4>{{ timeInDisplay }}</h4>
+  </div>
+
+  <h4 class="pill violet">Q.1</h4>
+
+  <div class="question-wrapper">
+    <h4>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum sunt
+      harum tempora nihil, officiis, ullam nobis quae, architecto provident
+      repellendus nemo odit nam! Doloremque nesciunt quasi, reprehenderit nisi a
+      cupiditate!
+    </h4>
+    <mat-radio-group color="primary">
+      <mat-radio-button class="right" value="season1">
+        season1
+      </mat-radio-button>
+      <mat-radio-button class="wrong" value="season2">
+        season2
+      </mat-radio-button>
+      <mat-radio-button value="season3"> season3 </mat-radio-button>
+      <mat-radio-button value="season4"> season4 </mat-radio-button>
+    </mat-radio-group>
+
+    <h4 class="answer-result right">Correct answer!</h4>
+  </div>
+
+  <div class="navigation-wrapper">
+    <button mat-raised-button color="primary">Next</button>
+    <!-- <button mat-raised-button color="warn">End Quiz</button> -->
+  </div>
+</div>

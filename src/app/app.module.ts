@@ -16,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatRadioModule } from '@angular/material/radio';
 import { QuizDetailComponent } from './pages/quiz-detail/quiz-detail.component';
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { QuizDetailComponent } from './pages/quiz-detail/quiz-detail.component';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent],
