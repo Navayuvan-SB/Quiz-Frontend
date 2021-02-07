@@ -45,7 +45,7 @@ const routes: Routes = [
     canActivate: [UserGaurdGuard],
   },
   {
-    path: 'result',
+    path: 'result/:id',
     component: ResultComponent,
     pathMatch: 'full',
     canActivate: [UserGaurdGuard],
