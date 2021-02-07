@@ -1,14 +1,20 @@
 .signup-form {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    .input-wrapper {
-      min-width: 300px;
-      max-width: 400px;
-      padding: 10px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .input-wrapper {
+    min-width: 300px;
+    max-width: 400px;
+    padding: 10px;
+  }
+  .nav-reference {
+    font-weight: 400;
+    margin-top: 50px;
+    span {
+      font-weight: 500;
     }
   }
-  
+}

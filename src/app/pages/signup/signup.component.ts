@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,12 +19,19 @@ export class SignupComponent implements OnInit {
 
   passwordFormControl = new FormControl('', [
     Validators.required,
-    Validators.minLength(8),
+    Validators.pattern(
+      '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
+    ),
   ]);
 
   nameFormControl = new FormControl('', [Validators.required]);
 
-  constructor() {}
+  constructor(
+    private api: ApiService,
+    private auth: AuthService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {}
 
@@ -31,5 +42,19 @@ export class SignupComponent implements OnInit {
       name: this.nameFormControl.value,
       password: this.passwordFormControl.value,
     };
+
+    this.api.createUser(cred).subscribe((resp) => {
+      this.snackBar.open('User account created, please login to continue', '', {
+        duration: 2000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+      });
+      this.router.navigate(['login']);
+    });
+  }
+
+  // Navigate to Login
+  navToLogin() {
+    this.router.navigate(['login']);
   }
 }

@@ -49,11 +49,12 @@
     />
     <mat-error
       *ngIf="
-        passwordFormControl.hasError('minlength') &&
+        passwordFormControl.hasError('pattern') &&
         !passwordFormControl.hasError('required')
       "
     >
-      Password length should be 8 characters long
+      Password should contain 1 special character, 1 uppercase & 1 lowercase
+      with 8 character long.
     </mat-error>
     <mat-error *ngIf="passwordFormControl.hasError('required')">
       Password is <strong>required</strong>
@@ -103,5 +104,9 @@
     (click)="signUpUser()"
   >
     Signup
+  </button>
+
+  <button mat-button class="nav-reference" (click)="navToLogin()">
+    Already have an account? <span>Login</span>
   </button>
 </form>

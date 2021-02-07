@@ -29,4 +29,13 @@ export class ApiService {
     const url = this.currentIp + '/user/login';
     return this.post(url, cred);
   }
+
+  // Create user
+  public createUser(cred: { email: string; password: string; name: string }) {
+    const url = this.currentIp + '/user/register';
+
+    // Mention the role
+    cred['role'] = 'user';
+    return this.post(url, cred);
+  }
 }
