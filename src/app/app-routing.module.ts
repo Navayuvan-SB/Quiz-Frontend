@@ -39,7 +39,7 @@ const routes: Routes = [
     canActivate: [UserGaurdGuard],
   },
   {
-    path: 'quiz-detail',
+    path: 'quiz-detail/:id',
     component: QuizDetailComponent,
     pathMatch: 'full',
     canActivate: [UserGaurdGuard],
@@ -51,7 +51,7 @@ const routes: Routes = [
     canActivate: [UserGaurdGuard],
   },
   {
-    path: 'admin-quiz-detail',
+    path: 'admin-quiz-detail/:id',
     component: AdminQuizDetailsComponent,
     pathMatch: 'full',
     canActivate: [AdminGuard],
