@@ -1,7 +1,15 @@
 <div class="home-wrapper">
   <div class="header">
-    <h1>Welcome Navayuvan</h1>
-    <button mat-raised-button color="primary" (click)="openDialog()">Create Quiz</button>
+    <div class="user-section">
+      <h1>Welcome Navayuvan</h1>
+      <button mat-icon-button color="warn" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="openDialog()">
+      Create Quiz
+    </button>
   </div>
 
   <!-- Quiz Wrapper -->

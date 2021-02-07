@@ -17,7 +17,9 @@ export class LoginComponent implements OnInit {
 
   passwordFormControl = new FormControl('', [
     Validators.required,
-    Validators.minLength(8),
+    Validators.pattern(
+      '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
+    ),
   ]);
 
   constructor(
@@ -40,5 +42,10 @@ export class LoginComponent implements OnInit {
       this.auth.setToken(data['auth-token']);
       this.router.navigate(['home']);
     });
+  }
+
+  // Navigate to signup page
+  navToSignup() {
+    this.router.navigate(['signup']);
   }
 }

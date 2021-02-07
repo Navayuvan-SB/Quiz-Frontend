@@ -4,10 +4,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    h1 {
-      font-size: 40px;
-      color: rgb(26, 26, 26);
-      line-height: 50px;
+
+    .user-section {
+      display: flex;
+      align-items: center;
+      h1 {
+        font-size: 40px;
+        color: rgb(26, 26, 26);
+        line-height: 50px;
+        padding: 0;
+        margin: 0;
+      }
+      button {
+        margin-left: 10px;
+      }
     }
   }
   .quizzes {
@@ -100,6 +110,9 @@
     padding: 20px;
     .header {
       flex-direction: column;
+      .user-section {
+        margin-bottom: 25px;
+      }
       h1 {
         font-size: 30px;
       }

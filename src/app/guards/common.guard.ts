@@ -27,7 +27,7 @@ export class CommonGuard implements CanActivate {
       this.auth
         .getTokendata()
         .then((data) => {
-          if (data['role'] == 'admin' || data['role'] == 'login') {
+          if (data['role'] == 'admin' || data['role'] == 'user') {
             resolve(true);
           } else {
             this.router.navigate(['login']);

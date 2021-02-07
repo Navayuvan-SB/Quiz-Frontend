@@ -25,4 +25,9 @@ export class AuthService {
     const data = jwt_decode(token);
     return data;
   }
+
+  // Remove the token
+  public removeToken() {
+    localStorage.removeItem(this.AUTH_TOKEN_STRING);
+  }
 }
