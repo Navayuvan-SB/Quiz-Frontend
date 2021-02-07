@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from './guards/admin.guard';
+import { UserGaurdGuard } from './guards/user-gaurd.guard';
 import { AdminQuizDetailsComponent } from './pages/admin-quiz-details/admin-quiz-details.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -12,14 +14,35 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: 'signup', component: SignupComponent, pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, pathMatch: 'full' },
-  { path: 'quiz', component: QuizComponent, pathMatch: 'full' },
-  { path: 'quiz-detail', component: QuizDetailComponent, pathMatch: 'full' },
-  { path: 'result', component: ResultComponent, pathMatch: 'full' },
+  {
+    path: 'home',
+    component: HomeComponent,
+    pathMatch: 'full',
+    canActivate: [UserGaurdGuard, AdminGuard],
+  },
+  {
+    path: 'quiz',
+    component: QuizComponent,
+    pathMatch: 'full',
+    canActivate: [UserGaurdGuard],
+  },
+  {
+    path: 'quiz-detail',
+    component: QuizDetailComponent,
+    pathMatch: 'full',
+    canActivate: [UserGaurdGuard],
+  },
+  {
+    path: 'result',
+    component: ResultComponent,
+    pathMatch: 'full',
+    canActivate: [UserGaurdGuard],
+  },
   {
     path: 'admin-quiz-detail',
     component: AdminQuizDetailsComponent,
     pathMatch: 'full',
+    canActivate: [AdminGuard],
   },
 ];
 
