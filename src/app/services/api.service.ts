@@ -14,7 +14,8 @@ import { Quiz, QuizMetaData, Result } from '../models/quiz.model';
 })
 export class ApiService {
   private localIp = 'http://localhost:3000';
-  private currentIp: string = this.localIp;
+  private productionIp = 'https://online-quiz-tptl.herokuapp.com';
+  private currentIp: string = this.productionIp;
 
   constructor(
     private http: HttpClient,
