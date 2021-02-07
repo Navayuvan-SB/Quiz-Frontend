@@ -33,7 +33,7 @@ const routes: Routes = [
     canActivate: [CommonGuard],
   },
   {
-    path: 'quiz',
+    path: 'quiz/:id',
     component: QuizComponent,
     pathMatch: 'full',
     canActivate: [UserGaurdGuard],

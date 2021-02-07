@@ -5,7 +5,7 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { AuthService } from './auth.service';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 @Injectable({
@@ -22,7 +22,7 @@ export class ApiService {
   ) {}
 
   // Get header
-  private getHeader() {
+  private getHeader(): HttpHeaders {
     var header = new HttpHeaders();
     header = header.set('auth-token', this.auth.getToken());
     header = header.set('Accept', 'application/json');
@@ -31,29 +31,29 @@ export class ApiService {
   }
 
   // Get method
-  private get(url: string, options?: object) {
+  private get(url: string, options?: object): Observable<any> {
     return this.http
       .get(url, options)
       .pipe(catchError(this.handleError.bind(this)));
   }
 
   // Post method
-  private post(url: string, body: object, options?: object) {
+  private post(url: string, body: object, options?: object): Observable<any> {
     return this.http
       .post(url, body, options)
       .pipe(catchError(this.handleError.bind(this)));
   }
 
   // Delete method
-  private delete(url: string, options?: object) {
+  private delete(url: string, options?: object): Observable<any> {
     return this.http
       .delete(url, options)
       .pipe(catchError(this.handleError.bind(this)));
   }
 
   // Error handling
-  private handleError(error: HttpErrorResponse) {
-    if (error.status != 200) {
+  private handleError(error: HttpErrorResponse): Observable<any> {
+    if (error.status !== 200) {
       this.snackBar.open(error.error, '', {
         duration: 2000,
         horizontalPosition: 'right',
@@ -64,13 +64,17 @@ export class ApiService {
   }
 
   // Login User
-  public loginUser(cred: { email: string; password: string }) {
+  public loginUser(cred: { email: string; password: string }): Observable<any> {
     const url = this.currentIp + '/user/login';
     return this.post(url, cred);
   }
 
   // Create user
-  public createUser(cred: { email: string; password: string; name: string }) {
+  public createUser(cred: {
+    email: string;
+    password: string;
+    name: string;
+  }): Observable<any> {
     const url = this.currentIp + '/user/register';
 
     // Mention the role
@@ -79,8 +83,14 @@ export class ApiService {
   }
 
   // Get quizzes
-  public getAllQuiz() {
+  public getAllQuiz(): Observable<any> {
     const url = this.currentIp + '/quiz';
+    return this.get(url, { headers: this.getHeader() });
+  }
+
+  // Get a quiz
+  public getAQuiz(id: string): Observable<any> {
+    const url = this.currentIp + '/quiz/' + String(id);
     return this.get(url, { headers: this.getHeader() });
   }
 }

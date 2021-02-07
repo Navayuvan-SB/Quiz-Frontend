@@ -3,10 +3,16 @@
     <img src="../../../assets/undraw_Questions_re_1fy7.svg" />
   </div>
   <div class="quiz-details">
-    <h1>Quiz Name</h1>
-    <h3>Difficulty: <b>easy</b></h3>
-    <h3>Category: <b>cat_name</b></h3>
+    <h1>{{ quiz.name }}</h1>
+    <h3>
+      Difficulty: <b>{{ quiz.difficulty }}</b>
+    </h3>
+    <h3>
+      Category: <b>{{ quiz.categoryName }}</b>
+    </h3>
     <h3>Total Questions: <b>10</b></h3>
-    <button mat-raised-button color="accent" (click)="navToQuiz()">Start Quiz</button>
+    <button mat-raised-button color="accent" (click)="navToQuiz()">
+      Start Quiz
+    </button>
   </div>
 </div>
