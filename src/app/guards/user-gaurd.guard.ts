@@ -28,31 +28,12 @@ export class UserGaurdGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return new Promise<boolean>((resolve, reject) => {
-      this.auth
-        .getTokendata()
-        .then((data) => {
-          if (data['role'] == 'user') {
-            resolve(true);
-          } else {
-            this.router.navigate(['login']);
-            this._snackBar.open('Un Authorized', '', {
-              duration: 2000,
-              horizontalPosition: 'right',
-              verticalPosition: 'top',
-            });
-            reject(false);
-          }
-        })
-        .catch((err) => {
-          this.router.navigate(['login']);
-          this._snackBar.open('Un Authorized', '', {
-            duration: 2000,
-            horizontalPosition: 'right',
-            verticalPosition: 'top',
-          });
-          reject(false);
-        });
-    });
+    const data = this.auth.getTokendata();
+    if (data['role'] == 'user') {
+      return true;
+    } else {
+      this.router.navigate(['login']);
+      return false;
+    }
   }
 }

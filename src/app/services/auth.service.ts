@@ -10,8 +10,8 @@ export class AuthService {
   constructor() {}
 
   // Get token
-  public async getToken(): Promise<string> {
-    return await localStorage.getItem(this.AUTH_TOKEN_STRING);
+  public getToken(): string {
+    return localStorage.getItem(this.AUTH_TOKEN_STRING);
   }
 
   // Set token
@@ -20,10 +20,13 @@ export class AuthService {
   }
 
   // Get token data
-  public async getTokendata() {
-    const token = await this.getToken();
-    const data = jwt_decode(token);
-    return data;
+  public getTokendata() {
+    const token = this.getToken();
+    if (token) {
+      const data = jwt_decode(token);
+      return data;
+    }
+    return {};
   }
 
   // Remove the token

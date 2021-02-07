@@ -23,20 +23,12 @@ export class CommonGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return new Promise<boolean>((resolve, reject) => {
-      this.auth
-        .getTokendata()
-        .then((data) => {
-          if (data['role'] == 'admin' || data['role'] == 'user') {
-            resolve(true);
-          } else {
-            this.router.navigate(['login']);
-            reject(false);
-          }
-        })
-        .catch((err) => {
-          reject(false);
-        });
-    });
+    const data = this.auth.getTokendata();
+    if (data['role'] == 'admin' || data['role'] == 'user') {
+      return true;
+    } else {
+      this.router.navigate(['login']);
+      return false;
+    }
   }
 }

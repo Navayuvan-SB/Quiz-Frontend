@@ -23,20 +23,12 @@ export class LoginGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return new Promise<boolean>((resolve, reject) => {
-      this.auth
-        .getTokendata()
-        .then((data) => {
-          if (data['role'] == 'admin' || data['role'] == 'login') {
-            this.router.navigate(['home']);
-            reject(false);
-          } else {
-            resolve(true);
-          }
-        })
-        .catch((err) => {
-          resolve(true);
-        });
-    });
+    const data = this.auth.getTokendata();
+    if (data['role'] == 'admin' || data['role'] == 'user') {
+      this.router.navigate(['home']);
+      return false;
+    } else {
+      return true;
+    }
   }
 }

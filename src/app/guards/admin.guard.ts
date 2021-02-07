@@ -28,31 +28,17 @@ export class AdminGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return new Promise<boolean>((resolve, reject) => {
-      this.auth
-        .getTokendata()
-        .then((data) => {
-          if (data['role'] == 'admin') {
-            resolve(true);
-          } else {
-            this.router.navigate(['login']);
-            this._snackBar.open('Un Authorized', '', {
-              duration: 2000,
-              horizontalPosition: 'right',
-              verticalPosition: 'top',
-            });
-            reject(false);
-          }
-        })
-        .catch((err) => {
-          this.router.navigate(['login']);
-          this._snackBar.open('Un Authorized', '', {
-            duration: 2000,
-            horizontalPosition: 'right',
-            verticalPosition: 'top',
-          });
-          reject(false);
-        });
-    });
+    const data = this.auth.getTokendata();
+    if (data['role'] == 'admin') {
+      return true;
+    } else {
+      this.router.navigate(['login']);
+      this._snackBar.open('Un Authorized', '', {
+        duration: 2000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+      });
+      return false;
+    }
   }
 }
