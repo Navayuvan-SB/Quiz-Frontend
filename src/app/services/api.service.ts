@@ -8,12 +8,12 @@ import { AuthService } from './auth.service';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Result } from '../models/quiz.model';
+import { Quiz, Result } from '../models/quiz.model';
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  private localIp: string = 'http://localhost:3000';
+  private localIp = 'http://localhost:3000';
   private currentIp: string = this.localIp;
 
   constructor(
@@ -24,7 +24,7 @@ export class ApiService {
 
   // Get header
   private getHeader(): HttpHeaders {
-    var header = new HttpHeaders();
+    let header = new HttpHeaders();
     header = header.set('auth-token', this.auth.getToken());
     header = header.set('Accept', 'application/json');
     header = header.set('Content-Type', 'application/json');
@@ -105,5 +105,23 @@ export class ApiService {
   public getAResult(id: string): Observable<any> {
     const url = this.currentIp + '/result/' + String(id);
     return this.get(url, { headers: this.getHeader() });
+  }
+
+  // Get Quiz getQuizCreation data
+  public getQuizCreationData(): Observable<any> {
+    const url = this.currentIp + '/quiz/quiz-gen-data';
+    return this.get(url, { headers: this.getHeader() });
+  }
+
+  // Add a quiz
+  public addQuiz(quiz: Quiz): Observable<any> {
+    const url = this.currentIp + '/quiz';
+    return this.post(url, quiz, { headers: this.getHeader() });
+  }
+
+  // Delete a quiz
+  deleteAQuiz(id: string): Observable<any> {
+    const url = this.currentIp + '/quiz/' + String(id);
+    return this.delete(url, { headers: this.getHeader() });
   }
 }
