@@ -20,6 +20,16 @@ export interface Quiz {
   createdAt: string;
 }
 
+export interface QuizMetaData {
+  name?: string;
+  categoryName?: string;
+  categories?: object[];
+  category?: string;
+  type?: string;
+  difficulty: object[] | string;
+  types?: object[] | string;
+}
+
 export interface Result {
   _id?: string;
   userId?: string;

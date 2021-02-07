@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateQuizComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      this.quizzes.push(result);
     });
   }
 

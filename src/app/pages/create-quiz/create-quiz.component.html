@@ -3,44 +3,59 @@
   <h4>Quiz Name</h4>
   <mat-form-field class="example-full-width">
     <mat-label>Enter the quiz name</mat-label>
-    <input matInput />
+    <input matInput [(ngModel)]="selectedData.name" />
   </mat-form-field>
 
   <h4>Category</h4>
   <mat-form-field appearance="fill">
     <mat-label>Chose category</mat-label>
-    <mat-select>
-      <mat-option value="select1"> Select 1 </mat-option>
-      <mat-option value="select2"> Select 1 </mat-option>
-      <mat-option value="select3"> Select 1 </mat-option>
-      <mat-option value="select4"> Select 1 </mat-option>
+    <mat-select [(ngModel)]="selectedData.category">
+      <mat-option
+        *ngFor="let category of creationData.categories"
+        [value]="category.id"
+      >
+        {{ category.name }}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 
-  <h4>Category</h4>
+  <h4>Difficulty</h4>
   <mat-form-field appearance="fill">
-    <mat-label>Chose category</mat-label>
-    <mat-select>
-      <mat-option value="select1"> Select 1 </mat-option>
-      <mat-option value="select2"> Select 1 </mat-option>
-      <mat-option value="select3"> Select 1 </mat-option>
-      <mat-option value="select4"> Select 1 </mat-option>
+    <mat-label>Chose difficulty</mat-label>
+    <mat-select [(ngModel)]="selectedData.difficulty">
+      <mat-option
+        *ngFor="let difficulty of creationData.difficulty"
+        [value]="difficulty.value"
+      >
+        {{ difficulty.label }}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 
-  <h4>Category</h4>
+  <h4>Answer Type</h4>
   <mat-form-field appearance="fill">
-    <mat-label>Chose category</mat-label>
-    <mat-select>
-      <mat-option value="select1"> Select 1 </mat-option>
-      <mat-option value="select2"> Select 1 </mat-option>
-      <mat-option value="select3"> Select 1 </mat-option>
-      <mat-option value="select4"> Select 1 </mat-option>
+    <mat-label>Chose answer type</mat-label>
+    <mat-select [(ngModel)]="selectedData.type">
+      <mat-option *ngFor="let type of creationData.types" [value]="type.value">
+        {{ type.label }}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Create</button>
+  <button
+    (click)="createQuiz()"
+    mat-button
+    cdkFocusInitial
+    [disabled]="
+      !selectedData.type &&
+      !selectedData.difficulty &&
+      !selectedData.category &&
+      !selectedData.categoryName
+    "
+  >
+    Create
+  </button>
 </mat-dialog-actions>

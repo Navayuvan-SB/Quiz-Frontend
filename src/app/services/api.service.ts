@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Quiz, Result } from '../models/quiz.model';
+import { Quiz, QuizMetaData, Result } from '../models/quiz.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -114,7 +114,7 @@ export class ApiService {
   }
 
   // Add a quiz
-  public addQuiz(quiz: Quiz): Observable<any> {
+  public addQuiz(quiz: QuizMetaData): Observable<any> {
     const url = this.currentIp + '/quiz';
     return this.post(url, quiz, { headers: this.getHeader() });
   }
