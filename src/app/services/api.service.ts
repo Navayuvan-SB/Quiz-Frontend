@@ -8,6 +8,7 @@ import { AuthService } from './auth.service';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Result } from '../models/quiz.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -91,6 +92,18 @@ export class ApiService {
   // Get a quiz
   public getAQuiz(id: string): Observable<any> {
     const url = this.currentIp + '/quiz/' + String(id);
+    return this.get(url, { headers: this.getHeader() });
+  }
+
+  // Save a result
+  public saveResult(result: Result): Observable<any> {
+    const url = this.currentIp + '/result';
+    return this.post(url, result, { headers: this.getHeader() });
+  }
+
+  // Get a Result
+  public getAResult(id: string): Observable<any> {
+    const url = this.currentIp + '/result/' + String(id);
     return this.get(url, { headers: this.getHeader() });
   }
 }

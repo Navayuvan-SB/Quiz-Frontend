@@ -5,6 +5,7 @@ export interface Question {
   question: string;
   correct_answer: string;
   incorrect_answers: string[];
+  options?: string[];
 }
 
 export interface Quiz {
@@ -17,4 +18,16 @@ export interface Quiz {
   categoryName: string;
   name: string;
   createdAt: string;
+}
+
+export interface Result {
+  _id?: string;
+  userId?: string;
+  noOfCorrectAnswers: number;
+  noOfWrongAnswers: number;
+  noOfTotalQuestions: number;
+  timeTaken: string;
+  quizId: string;
+  quizName: string;
+  createdAt?: string;
 }

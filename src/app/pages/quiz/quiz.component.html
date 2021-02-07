@@ -1,34 +1,59 @@
 <div class="quiz-questions">
   <div class="header">
-    <h3>Quiz Name</h3>
+    <h3>{{ quiz.name }}</h3>
     <h4>{{ timeInDisplay }}</h4>
   </div>
 
-  <h4 class="pill violet">Q.1</h4>
+  <h4 class="pill violet">Q. {{ activeQuestionIndex + 1 }}</h4>
 
   <div class="question-wrapper">
     <h4>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum sunt
-      harum tempora nihil, officiis, ullam nobis quae, architecto provident
-      repellendus nemo odit nam! Doloremque nesciunt quasi, reprehenderit nisi a
-      cupiditate!
+      {{ aciveQuestionObject.question }}
     </h4>
-    <mat-radio-group color="primary">
-      <mat-radio-button class="right" value="season1">
-        season1
+    <mat-radio-group
+      color="primary"
+      (change)="answerChoosed($event)"
+      [(ngModel)]="selectedValue"
+    >
+      <div class="overlay" *ngIf="isAnswered != 0"></div>
+      <mat-radio-button
+        *ngFor="let option of aciveQuestionObject.options"
+        [value]="option"
+        [class.right]="
+          option == aciveQuestionObject.correct_answer && isAnswered != 0
+        "
+        [class.wrong]="
+          option == selectedValue &&
+          option != aciveQuestionObject.correct_answer &&
+          isAnswered != 0
+        "
+      >
+        {{ option }}
       </mat-radio-button>
-      <mat-radio-button class="wrong" value="season2">
-        season2
-      </mat-radio-button>
-      <mat-radio-button value="season3"> season3 </mat-radio-button>
-      <mat-radio-button value="season4"> season4 </mat-radio-button>
     </mat-radio-group>
 
-    <h4 class="answer-result right">Correct answer!</h4>
+    <h4 class="answer-result right" *ngIf="isAnswered == 1">Correct answer!</h4>
+    <h4 class="answer-result wrong" *ngIf="isAnswered == 2">Wrong answer!</h4>
   </div>
 
   <div class="navigation-wrapper">
-    <button mat-raised-button color="primary">Next</button>
-    <!-- <button mat-raised-button color="warn">End Quiz</button> -->
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="nextQuestion()"
+      [disabled]="!selectedValue"
+      *ngIf="activeQuestionIndex + 1 != quiz.questions.length"
+    >
+      Next
+    </button>
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="submitQuiz()"
+      [disabled]="!selectedValue"
+      *ngIf="activeQuestionIndex + 1 == quiz.questions.length"
+    >
+      Submit
+    </button>
   </div>
 </div>
