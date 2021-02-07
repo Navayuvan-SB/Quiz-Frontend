@@ -1,13 +1,18 @@
 <div class="home-wrapper">
   <div class="header">
     <div class="user-section">
-      <h1>Welcome Navayuvan</h1>
+      <h1>Welcome to Online Quiz</h1>
       <button mat-icon-button color="warn" (click)="logout()">
         <mat-icon>logout</mat-icon>
       </button>
     </div>
 
-    <button mat-raised-button color="primary" (click)="openDialog()">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="openDialog()"
+      *ngIf="isAdmin"
+    >
       Create Quiz
     </button>
   </div>
@@ -15,16 +20,13 @@
   <!-- Quiz Wrapper -->
   <div class="quizzes">
     <!-- Quiz -->
-    <div
-      class="quiz-wrapper"
-      *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 1, 1]"
-    >
-      <button mat-button (click)="navToQuizDetails()">
+    <div class="quiz-wrapper" *ngFor="let quiz of quizzes">
+      <button mat-button (click)="navToQuizDetails(quiz)">
         <div class="quiz">
           <div class="info">
-            <h3>Quiz Name</h3>
-            <h4 class="pill green">Difficulty</h4>
-            <h4 class="pill violet">Category</h4>
+            <h3>{{ quiz.name }}</h3>
+            <h4 class="pill green">{{ quiz.difficulty }}</h4>
+            <h4 class="pill violet">{{ quiz.categoryName }}</h4>
           </div>
           <div class="action-start">
             <h2>></h2>
