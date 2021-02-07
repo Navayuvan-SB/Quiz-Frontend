@@ -23,4 +23,10 @@ export class ApiService {
   private delete(url: string) {
     return this.http.delete(url);
   }
+
+  // Login User
+  public loginUser(cred: { email: string; password: string }) {
+    const url = this.currentIp + '/user/login';
+    return this.post(url, cred);
+  }
 }

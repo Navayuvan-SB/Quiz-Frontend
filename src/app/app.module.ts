@@ -22,6 +22,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from "@angular/material/select"
+import { MatSnackBarModule } from "@angular/material/snack-bar"
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { MatSelectModule } from "@angular/material/select"
     MatCardModule,
     MatRadioModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

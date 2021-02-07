@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   // Form field controls
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -18,16 +20,25 @@ export class LoginComponent implements OnInit {
     Validators.minLength(8),
   ]);
 
-  constructor() {}
+  constructor(
+    private api: ApiService,
+    private auth: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
   // Login the user
-  loginUser() : void{
+  loginUser(): void {
     const cred = {
       email: this.emailFormControl.value,
-      password: this.passwordFormControl.value
+      password: this.passwordFormControl.value,
     };
-  }
 
+    // Hit Login API
+    this.api.loginUser(cred).subscribe((data) => {
+      this.auth.setToken(data['auth-token']);
+      this.router.navigate(['home']);
+    });
+  }
 }
